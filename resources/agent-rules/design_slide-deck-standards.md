@@ -68,13 +68,21 @@ combine: 可與任何 rule 搭配
 ### 5. 截圖黑邊陷阱與局部特寫規範（Letterboxing Void & Zoom-Crop Principle）
 - **現象一（黑邊陷阱）**：實機截圖周圍出現大面積純黑邊框（Letterboxing），終端畫面縮得極小，宛如漂浮在黑色無人區。
   - **根因**：容器使用了 `background: '#000'` 與 `flex: 1` 撐高，並配合 `objectFit: 'contain'`。
-  - **解法**：容器移除 `#000` 背景，設定符合截圖實際比例或固定高度，搭配 `objectFit: 'cover'`。
+  - **解法**：容器移除 `#000` 背景，設定符合截圖實際比例或固定高度，搭配 `objectFit: 'cover'` 或 `objectFit: 'contain'` 居中。
 - **現象二（全景縮小導致字體過小）**：將 1920×826 的超寬終端截圖「整張原尺寸塞進半欄」，導致終端字體縮至 12~14px 難以辨識，且 70% 面積被無意義的桌面邊框、黑色空白與頂部視窗欄浪費。
-- **解法（Crop & Zoom 局部放大聚焦）**：
-  - **容器高度撐足（540~562px）**：圖片外層容器給予 `height: '562px'`，設定 `overflow: 'hidden'` 與 `borderRadius`，與對側兩張說明卡片完美等高咬合。
-  - **放大局部視角（Scale 1.6x~2.0x）**：內部 `img` 設定放大寬度（如 `width: '3170px'`），搭配 `translate` 位移，將**關鍵命令（Command）與核心回顯（Status Code / Flag / Output）** 精準移至容器中央。
+- **解法（首選：實體裁切 Physical Crop Asset · 次選：CSS Zoom-Crop）**：
+  - **首選標準（實體裁切圖檔）**：
+    - 強烈避免使用脆弱的 CSS `translate` / 3000px 放大黑客寫法（極易因前端重置樣式的 `max-width: 100%` 壓制導致位移推飛、露出空白與 DevTools）。
+    - 最佳實踐是直接透過腳本將截圖實體裁切為「終端機本體視窗」（包含終端標題列、完整命令與回顯區塊），另存為 `*-crop.png` 資源檔。
+    - 在 JSX 中只需乾淨透明的標準寫法：
+      外層容器 `height: '562px', background: c.termBg, borderRadius: 18, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'`，
+      內部圖片 `width: '100%', height: '100%', objectFit: 'contain'`。
+      **零魔法座標、永不跑位、解析度最銳利、程式碼最優雅。**
+  - **次選（CSS Crop & Zoom 視覺化微調）**：
+    - 容器高度撐足（540~562px）：設定 `overflow: 'hidden'` 與 `borderRadius`，與對側說明卡片高度咬合。
+    - 內部 `img` 必須顯式配置 `maxWidth: 'none', maxHeight: 'none', minWidth: '0px'` 防止全域 CSS 壓制。
   - **字級對齊 1080p 投影**：確保裁切放大後，終端機內的字體大小等效於 26~30px，後排學員不需瞇眼即可看清。
-  - **底部搭配單行情境說明條**：容器下方放置一條簡短的標籤條（如「實機探測：分別測試常見別名目錄 /icons/ 與 /cgi-bin/」），補充操作背景。
+  - **底部搭配單行情境說明條**：容器下方放置一條簡短的標籤條（如「實機回傳：HTTP/1.1 500 Internal Server Error」），補充操作結論。
 
 ### 6. 修復留白時的過度塞字與反向雜亂陷阱（The Content Bloat / Over-Stuffing Trap）
 - **現象**：Agent 發現投影片下半部有 30~50% 留白時，反射性地「擅自加戲」——硬塞入環境對照表、實戰排錯區塊、多餘教學條目，把原本聚焦俐落的簡報搞成密密麻麻的參考手冊（Cheat-sheet），頁面越來越雜亂。
