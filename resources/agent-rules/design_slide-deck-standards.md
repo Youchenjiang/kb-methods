@@ -35,14 +35,15 @@ combine: 可與任何 rule 搭配
 
 ---
 
-## 四大常見缺陷與根因剖析
-
-### 1. 容器盲目撐滿導致的死空間（Dead White Space）
-- **現象**：Card 外框拉滿整個螢幕高度，但卡片內只有 3 行短字，中間或下半部留出 60% 尷尬的空白。
-- **根因**：使用了 `height: '100%'` 搭配 `justifyContent: 'space-between'`。在內容很多時看起來正常，一旦文字提煉精簡，頭尾元素被推到極端，中間完全崩壞。
+### 1. 容器盲目撐滿導致的死空間（Dead White Space）與「電梯井陷阱」
+- **現象**：
+  - **一般死空間**：Card 外框拉滿整個螢幕高度，但卡片內只有 3 行短字，下半部留出 60% 尷尬空白。
+  - **電梯井 / 瘦長柱子（The Elevator Shaft Trap）**：在 4 欄或 5 欄 Grid 中，每欄寬度極窄（約 300px），卻硬設 `height: '80%+'` 搭配 `justifyContent: 'space-between'`，導致標題在天花板、結論在腳底，中間留下整整 400px「純色無人區」。
+- **根因**：使用了 `height: '100%'` 或 `height: '85%'` 搭配垂直方向的 `justifyContent: 'space-between'`。
 - **解法**：
-  - 容器與 Card 預設高度為 `auto`（隨內容收縮）。
-  - Grid wrapper 採用 `alignContent: 'start'`，多張卡片靠上排列或依據內容自適應。
+  - 容器與 Card 預設高度為 `auto`（隨內容收縮），改用固定 `gap` 維持自然呼吸感。
+  - 多欄布局時，多餘高度應安排「橫向因果推進列（Summary Bar）」或「管線圖（Pipeline）」，絕不縱容空心管子。
+  - **機械防線**：交付前執行 `npm run lint:slides` 進行靜態排版掃描。
 
 ### 2. 左右欄視覺權重失衡（Visual Weight Imbalance）
 - **現象**：左欄放了 1080p 實機截圖或深黑終端代碼區塊（視覺重量極重），右欄卻只有「200 OK 是成功的意思」兩行灰色字，整張投影片視覺向左傾倒。
