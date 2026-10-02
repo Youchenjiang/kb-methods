@@ -69,6 +69,24 @@ $$\text{[TYPE]} \_ \text{[DATE]} \_ \text{[TOPIC]} \ [\_ \text{ROLE}]$$
 * **類別天然分群**：檔案總管排序時，所有 `MEET_`、`TALK_`、`WORKSHOP_` 各自聚集成塊。
 * **群內時間遞增**：各大類內部依 `202609...`、`202610...` 自動按時間由舊到新排整齊，檢索效率最高。
 
+### 4. 教材套件自包含目錄結構（Curriculum Kit Encapsulation）
+為防範散檔污染根目錄、並隔離前端展示工具（Open Slide）之升級或清理風險，所有實戰課程統一封裝至 `workshops/` 專屬目錄：
+
+```text
+Slide/workshops/YYYYMM_[PLATFORM]_[TOPIC]/
+├── docs/                                 # 核心教材文檔 (教案 + 學員手冊)
+│   ├── instructor-guide.md
+│   └── lab-handout.md
+├── slides/                               # 投影片原始碼獨立存檔 (防範前端框架重灌遺失)
+│   ├── index.tsx
+│   └── assets/
+└── scripts/                              # 實機 Live Demo 與 PoC 腳本庫
+    ├── 01_test_traversal.sh
+    ├── 02_exploit_rce.sh
+    └── 03_reverse_shell.sh
+```
+
+
 
 ---
 
