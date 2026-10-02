@@ -16,6 +16,7 @@
 - `problem_` → 思考模式（遇到問題怎麼想）
 - `safety_` → 安全（什麼事不能做）
 - `workflow_` → 工作流（怎麼做事更有效）
+- `design_` → 視覺與簡報設計（排版防坑、色彩語意、簡報工程）
 
 看到檔名就知道規則在說什麼。
 
@@ -41,6 +42,12 @@
 |------|-----------|
 | [workflow_atomic-commits.md](./workflow_atomic-commits.md) | 一個 commit 只做一件事 |
 | [workflow_match-test-to-risk.md](./workflow_match-test-to-risk.md) | 風險越高，測試越嚴格 |
+
+## 視覺與簡報設計 (design)
+
+| 檔案 | 一句話說明 |
+|------|-----------|
+| [design_slide-deck-standards.md](./design_slide-deck-standards.md) | 簡報防禦性排版、死空間防護、色彩語意與去 AI 腔 |
 
 ---
 
