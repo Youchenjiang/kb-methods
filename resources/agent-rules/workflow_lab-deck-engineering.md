@@ -43,6 +43,35 @@ combine: 可與 design_slide-deck-standards 搭配
 
 ---
 
+## 專案與交付物語意命名規範 (Semantic Naming Standard)
+
+所有簡報專案與交付物統一採用 **「類型分群 - 日期遞增 - 主題識別」** 的三段式結構：
+
+$$\text{[TYPE]} \_ \text{[DATE]} \_ \text{[TOPIC]} \ [\_ \text{ROLE}]$$
+
+### 1. 三大核心報告類型（MECE 正交分類）
+簡報在現實場景中只存在三大受眾場合，嚴禁使用模糊或打架詞彙（如 `INTERNAL`、`SHARE`）：
+
+| 類型代碼 | 受眾場合與本質 | 日期粒度 | 交付物規格 | 命名範例 |
+| :--- | :--- | :---: | :--- | :--- |
+| **`MEET_`** | **會議與業務報告**<br>（週會、進度同步、架構審查、事件檢討） | `YYYYMMDD`<br>(8碼日級) | 單一投影片，開完會即封存 | `MEET_20261003_Weekly-Sync.pptx` |
+| **`WORKSHOP_`** | **實戰打靶與動手課程**<br>（靶場演練、動手實作課程） | `YYYYMM`<br>(6碼月級) | **三位一體**（教案 + 實作手冊 + 簡報），長青維護 | `WORKSHOP_202610_CDX_CVE-2021-41773/` |
+| **`TALK_`** | **外部公開演講**<br>（研討會、大會發表、社群分享） | `YYYYMM`<br>(6碼月級) | 投影片 + 講者備忘，強調破題與吸引力 | `TALK_202610_CYBERSEC_Apache-Analysis.pptx` |
+
+### 2. 三位一體交付物後綴（Artifact Suffixes）
+在 `WORKSHOP_` 專案下，三位一體各角色檔案必須統一後綴：
+* **教師教案**：`WORKSHOP_YYYYMM_[PLATFORM]_[TOPIC]_instructor-guide.md`
+* **學員手冊**：`WORKSHOP_YYYYMM_[PLATFORM]_[TOPIC]_lab-handout.md`
+* **簡報匯出**：`WORKSHOP_YYYYMM_[PLATFORM]_[TOPIC]_deck.pptx`
+* **Open Slide 路由**：`kebab-case`（如 `workshop-202610-cdx-cve-2021-41773`）
+
+### 3. 日期放中間的核心效益
+* **類別天然分群**：檔案總管排序時，所有 `MEET_`、`TALK_`、`WORKSHOP_` 各自聚集成塊。
+* **群內時間遞增**：各大類內部依 `202609...`、`202610...` 自動按時間由舊到新排整齊，檢索效率最高。
+
+
+---
+
 ## 研發生命週期四大階段 (Four-Phase Lifecycle)
 
 ### Phase 1 · 視角與因果定錨 (Mental Model & Causal Scoping)
@@ -67,11 +96,11 @@ combine: 可與 design_slide-deck-standards 搭配
 ### Phase 2 · 教材三位一體設計（純文字階段）
 此階段全程在 Markdown 進行，將技術因果轉換為三種交付物：
 
-1. **教師指導手冊 (`*_instructor_guide.md`)**：
+1. **教師指導手冊 (`*_instructor-guide.md`)**：
    - **時間配速規劃**：例如 20 分鐘精準配速（0~2min 視角切分、2~5min 正常架構、5~9min 越界讀檔、9~13min 協定500、13~17min RCE反彈、17~20min 邊界對照）。
    - **互動提問設計**：「這時候問學生什麼問題？期待學生回答什麼？」。
    - **防呆禁區（Don'ts）**：明確標註「不要一開始丟 PoC」、「不要把 403 說成漏洞證據」。
-2. **學員實作手冊 (`*_lab_handout.md`)**：
+2. **學員實作手冊 (`*_lab-handout.md`)**：
    - **15 步實機操作 SOP**：從登入靶場、確認 IP、測試連通、探測別名、到反彈 Shell。
    - **Base64 單檔內嵌機制**：所有實機截圖轉為 Base64 Data URI 定義於手冊底部（`[img_step_X]: data:image/png;base64,...`），確保單檔分發時離線可用、永不掉圖。
    - **隨堂檢驗（Exit Tickets）**：10 題核心觀念開放式問答，驗收學員理解深度。
