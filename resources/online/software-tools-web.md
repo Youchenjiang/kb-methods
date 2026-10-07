@@ -80,7 +80,10 @@
 [CrackStation](https://crackstation.net/)：線上 Hash 破解工具，擁有龐大的 Rainbow Tables，可用於破解 MD5、SHA1 等多種常見雜湊。  
 [CyberChef](https://gchq.github.io/CyberChef/)：資安界的「瑞士刀」，支援編解碼、加解密、格式轉換等多種資料處理功能。  
 [Shodan](https://www.shodan.io/)：物聯網裝置搜尋引擎，可用於搜尋曝露在網際網路上的伺服器、路由器、監視器等設備及其開放的埠口與服務資訊。  
-[DNSDumpster](https://dnsdumpster.com/)：DNS 偵察與研究工具，可快速查詢目標網域之 DNS 紀錄、子網域、IP 位址並視覺化呈現網域關係圖。
+[DNSDumpster](https://dnsdumpster.com/)：DNS 偵察與研究工具，可快速查詢目標網域之 DNS 紀錄、子網域、IP 位址並視覺化呈現網域關係圖。  
+[HexEd.it](https://hexed.it/)：純瀏覽器端運行的線上十六進位 (Hex) 編輯器，支援大檔檢視、結構解析、修復檔頭 Magic Bytes 與二進位隱寫分析。  
+[Unroll.ing](https://www.unroll.ing/zh-tw/)：線上 Binwalk 工具 (執行 Binwalk v3)，支援分析韌體、磁碟映像與二進位檔案，快速識別並提取內部嵌入的檔案特徵、壓縮資料與檔案系統。
+
 
 ### 系統工具
 
