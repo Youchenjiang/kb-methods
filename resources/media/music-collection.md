@@ -348,7 +348,8 @@
 [**指尖笑 \- 青衣**](https://www.youtube.com/watch?v=DkKUyXtRKMo)  
 [**L (桃籽) \- 此去半生**](https://www.youtube.com/watch?v=Kr5bZkxVkgo)  
 [**光澤 \- 空心**](https://www.youtube.com/watch?v=IslhmC1Sw-I)  
-[**Haohao Cover \- 你不是愛我**](https://www.youtube.com/watch?v=pNVyFyNw7Ug)
+[**Haohao Cover \- 你不是愛我**](https://www.youtube.com/watch?v=pNVyFyNw7Ug)  
+[**王艷薇 \- 離開我的依賴**](https://www.youtube.com/watch?v=bedsQOpB8oc)
 
 ## **懷舊與回憶 Nostalgia & Memories**
 
