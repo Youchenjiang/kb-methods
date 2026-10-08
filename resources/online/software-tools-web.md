@@ -97,7 +97,8 @@
 ### 開發者工具
 
 [Amazon Cognito](https://aws.amazon.com/cognito/)：將使用者註冊、登入和存取控制新增至 Web 和行動應用程式  
-[Jules](https://jules.google.com/session)：協助開發的網站，能讀取GitHub來源並將修改完的提交回去作為新分支
+[Jules](https://jules.google.com/session)：協助開發的網站，能讀取GitHub來源並將修改完的提交回去作為新分支  
+[Appllama](https://appllama.io/)：行動 App 介面靈感與商業拆解庫，收錄高營收 iOS App 的 UI/UX 設計、Onboarding 引導流程與付費牆 (Paywalls)，結合營收數據分析轉化策略。
 
 ## **推薦工具**
 
